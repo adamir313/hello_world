@@ -7,6 +7,7 @@ import 'package:hello_world/models/product.dart';
 import 'package:hello_world/scoped-models/main.dart';
 import 'package:hello_world/widgets/form_inputs/image.dart';
 import 'package:hello_world/widgets/form_inputs/location.dart';
+import 'package:hello_world/widgets/ui_elements/adaptive_progress_indicator.dart';
 import 'package:scoped_model/scoped_model.dart';
 
 class ProductEditPage extends StatefulWidget {
@@ -41,6 +42,9 @@ class _ProductEditPageState extends State<ProductEditPage> {
           : Scaffold(
               appBar: AppBar(
                 title: Text('Edit Product'),
+                elevation: Theme.of(context).platform == TargetPlatform.iOS
+                    ? 0.0
+                    : 4.0,
               ),
               body: pageContent,
             );
@@ -228,8 +232,7 @@ class _ProductEditPageState extends State<ProductEditPage> {
     return ScopedModelDescendant<MainModel>(
         builder: (BuildContext context, Widget child, MainModel model) {
       return model.isLoading
-          ? Center(
-              child: CircularProgressIndicator())
+          ? Center(child: AdaptiveProgressIndicator())
           : RaisedButton(
               child: Text('Save'),
               textColor: Colors.white,

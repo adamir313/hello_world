@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hello_world/Pages/auth.dart';
 import 'package:hello_world/Pages/products.dart';
 import 'package:hello_world/Pages/products_admin.dart';
+import 'package:hello_world/Shared/adaptive_theme.dart';
 import 'package:hello_world/scoped-models/main.dart';
 import 'package:hello_world/widgets/helper/custom_route.dart';
 import 'package:scoped_model/scoped_model.dart';
@@ -42,11 +43,7 @@ class _MyAppState extends State<MyApp> {
     return ScopedModel<MainModel>(
         model: _model,
         child: MaterialApp(
-          theme: ThemeData(
-              brightness: Brightness.light,
-              primarySwatch: Colors.deepOrange,
-              accentColor: Colors.deepPurple,
-              buttonColor: Colors.deepPurple),
+          theme: getAdaptiveThemeData(context),
           //home: AuthPage(),
           routes: {
             '/': (BuildContext context) =>

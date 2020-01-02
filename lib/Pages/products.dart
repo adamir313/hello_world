@@ -28,6 +28,8 @@ class _ProductsPageState extends State<ProductsPage> {
       drawer: _buildSideDrawer(context),
       appBar: AppBar(
         title: Text('Easy List'),
+        elevation:
+                Theme.of(context).platform == TargetPlatform.iOS ? 0.0 : 4.0,
         actions: <Widget>[
           ScopedModelDescendant<MainModel>(
             builder: (BuildContext context, Widget child, MainModel model) {
